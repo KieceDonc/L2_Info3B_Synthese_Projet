@@ -7,13 +7,14 @@
 #include "functions.inc" 
 #include "stones1.inc"
 #include "skies.inc"
+#include "echiquier.pov"
 
 #declare Pi = 3.1415926535897932384626;
 
 #declare axe=1;
-#declare sca=3;
+#declare sca=7;
 camera {
-location <1.2*sca,1*sca,0.5>
+location <1.2*sca,1*sca,5>
 look_at <0,0,0>
 sky   <0,0,1>
 right <-image_width/image_height,0,0>
@@ -109,3 +110,4 @@ plane{
 rotate <0,0,45>
 }
 
+echiquier_main(<0,0,-1>,0.5)
