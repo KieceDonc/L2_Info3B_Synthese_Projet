@@ -5,12 +5,13 @@
 /**
  * Fonction principale qui reçoit les paramètres et coordonne les différentes sous étapes
  * @param {Coordonnées} origin_coord point précisant l'origine de notre échiquier. Il s'agit du point le plus en bas à droite par rapport à l'échiquier
- * @param {Nombre} scale_factor facteur qui permet d'agrandir "scale_factor" fois notre l'échiquier  
+ * @param {Nombre} scale_factor facteur qui permet d'agrandir "scale_factor" fois notre l'échiquier 
+ * @param {Nombre} hauteur de l'échiquier
  */
-#macro echiquier_main(origin_coord,scale_factor)
+#macro echiquier_main(origin_coord,scale_factor,heigh)
 
   create_points_echiquier(origin_coord,scale_factor)
-  draw_echiquier_squares(origin_coord,scale_factor)
+  draw_echiquier_squares(origin_coord,scale_factor,heigh)
 
 #end
 
@@ -29,8 +30,9 @@
  *
  * @param {Coordonnées} origin_coord point précisant l'origine de notre échiquier. Il s'agit du point le plus en bas à gauche par rapport à l'échiquier
  * @param {Nombre} scale_factor facteur qui permet d'agrandir "scale_factor" fois notre l'échiquier  
+ * @param {Nombre} hauteur de l'échiquier
  */
-#macro draw_echiquier_squares(origin_coord,scale_factor)
+#macro draw_echiquier_squares(origin_coord,scale_factor,heigh)
 
   #declare color_white = color rgb<1,1,1>; // couleur pour les cases blanches
   #declare color_dark = color rgb<0,0,0>; // couleur pour les cases noires
@@ -41,7 +43,7 @@
         #declare start_coord = points_echiquier[_x][_y];
         #declare origin_z = origin_coord.z;
         #declare end_coord = points_echiquier[_x+1][_y+1];
-        #declare end_coord = <end_coord.x,end_coord.y,scale_factor+origin_z>; // on donne de la hauteur à notre échiquier
+        #declare end_coord = <end_coord.x,end_coord.y,heigh+origin_z>; // on donne de la hauteur à notre échiquier
         #declare is_current_square_white = false;
         is_square_white(_x,_y,is_current_square_white) // on récupère le booléen pour savoir si notre case est blanche ou noir
 

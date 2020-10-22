@@ -110,4 +110,4 @@ plane{
 rotate <0,0,45>
 }
 
-echiquier_main(<0,0,-1>,0.5)
+echiquier_main(<0,0,-1>,0.5,0.125)
