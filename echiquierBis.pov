@@ -10,7 +10,9 @@
   et comment le déplacer depuis sa création sur l'origine.
   -- n la longueur = largeur | col1 la couleur des cases paires | col2 la couleur des cases impaires.
   -- c * 1 = longueur des cotes | h * 1 = hauteur | dx dy et dz = deplacement par rapport a l'origine (coordonnee du sommet bas gauche)
-  commentaire ajouté*/
+  commentaire ajouté
+  
+  AAAAAAAAAAAAAAAAAAAAAA*/
 #macro Echiquier(n,col1,col2,c,h,dx,dy,dz)
     union{
         #for(i,0,n)
