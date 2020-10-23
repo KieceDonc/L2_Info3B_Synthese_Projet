@@ -8,7 +8,7 @@
  * @param {Nombre} scale_factor facteur qui permet d'agrandir "scale_factor" fois notre l'échiquier 
  * @param {Nombre} hauteur de l'échiquier
  */
-#macro echiquier_main(origin_coord,scale_factor,heigh)
+#macro echiquier_draw(origin_coord,scale_factor,heigh)
 
   create_points_echiquier(origin_coord,scale_factor)
   draw_echiquier_squares(origin_coord,scale_factor,heigh)
