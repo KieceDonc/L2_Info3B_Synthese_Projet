@@ -3,7 +3,7 @@
 <KigDocument axes="1" grid="1" Version="19.12.3" CompatibilityVersion="0.7.0">
  <CoordinateSystem>Euclidean</CoordinateSystem>
  <Hierarchy>
-  <Data type="double" id="1">7</Data>
+  <Data type="double" id="1">6</Data>
   <Data type="double" id="2">-2</Data>
   <Data type="double" id="3">0</Data>
   <Data type="double" id="4">-2</Data>
@@ -11,15 +11,15 @@
   <Data type="double" id="6">1</Data>
   <Data type="double" id="7">-0.499912</Data>
   <Data type="double" id="8">2</Data>
-  <Data type="double" id="9">6.2</Data>
+  <Data type="double" id="9">5.2</Data>
   <Data type="double" id="10">3.5468</Data>
-  <Data type="double" id="11">0.254521</Data>
+  <Data type="double" id="11">0.3</Data>
   <Data type="double" id="12">-0.5</Data>
   <Object type="FixedPoint" id="13">
    <Parent id="2"/>
    <Parent id="12"/>
   </Object>
-  <Data type="double" id="14">7</Data>
+  <Data type="double" id="14">6</Data>
   <Object type="FixedPoint" id="15">
    <Parent id="6"/>
    <Parent id="14"/>
@@ -27,7 +27,7 @@
   <Data type="double" id="16">-0.0106741</Data>
   <Data type="double" id="17">1.02635</Data>
   <Data type="double" id="18">-0.020127</Data>
-  <Data type="double" id="19">6.00034</Data>
+  <Data type="double" id="19">5</Data>
   <Object type="FixedPoint" id="20">
    <Parent id="11"/>
    <Parent id="19"/>
@@ -35,7 +35,7 @@
   <Data type="double" id="21">-0.0055691</Data>
   <Data type="double" id="22">1</Data>
   <Data type="double" id="23">0.765999</Data>
-  <Data type="double" id="24">6.2</Data>
+  <Data type="double" id="24">5.2</Data>
   <Data type="double" id="25">1</Data>
   <Object type="FixedPoint" id="26">
    <Parent id="25"/>
@@ -47,7 +47,7 @@
    <Parent id="9"/>
   </Object>
   <Data type="double" id="29">-1</Data>
-  <Data type="double" id="30">6</Data>
+  <Data type="double" id="30">5</Data>
   <Object type="FixedPoint" id="31">
    <Parent id="22"/>
    <Parent id="30"/>
@@ -97,7 +97,7 @@
    <Parent id="45"/>
    <Parent id="15"/>
   </Object>
-  <Data type="double" id="48">6</Data>
+  <Data type="double" id="48">5</Data>
   <Object type="FixedPoint" id="49">
    <Parent id="29"/>
    <Parent id="48"/>
@@ -124,7 +124,7 @@
    <Parent id="54"/>
    <Parent id="37"/>
   </Object>
-  <Data type="double" id="56">6.00034</Data>
+  <Data type="double" id="56">5</Data>
   <Object type="FixedPoint" id="57">
    <Parent id="3"/>
    <Parent id="56"/>
