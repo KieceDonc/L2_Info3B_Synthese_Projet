@@ -8,13 +8,14 @@
 #include "stones1.inc"
 #include "skies.inc"
 #include "echiquier.pov"
+#include "pawn.pov"
 
 #declare Pi = 3.1415926535897932384626;
 
 #declare axe=1;
-#declare sca=7;
+#declare sca=10;
 camera {
-location <1.2*sca,1*sca,5>
+location <1.2*sca,1*sca,sca>
 look_at <0,0,0>
 sky   <0,0,1>
 right <-image_width/image_height,0,0>
@@ -111,3 +112,4 @@ rotate <0,0,45>
 }
 
 echiquier_draw(<0,0,-1>,0.5,0.125)
+pawn_draw()
