@@ -22,5 +22,6 @@ light_source
     color <1.0, 1.0,  1.0> // <red, green, blue>
 } 
  
-Pawn()
+object{union {Pawn(Black) translate<0,0,-2> }}
+
 

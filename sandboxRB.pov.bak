@@ -1,6 +1,6 @@
-#include "sky.inc"
-#include "triedre.inc" 
-#include "pi.inc" 
+#include "inc/sky.inc"
+#include "inc/triedreXYZ.inc"
+#include "pawnRB.pov"
 
 
 camera 
@@ -21,13 +21,6 @@ light_source
     <10, -10, 2> // <x, y, z>
     color <1.0, 1.0,  1.0> // <red, green, blue>
 } 
+ 
+Pawn()
 
-intersection{   
-
-cylinder{<0,0,-1.5> <0,0,1.5> 1 pigment{ color Red}}
-
-intersection{
-
-plane{<0,0,1> 0.01}
-plane{<0,0,-1> 0.01}
-}}
