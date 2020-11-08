@@ -1,106 +1,121 @@
-#declare pawn_color = color rgb<1,1,1>;
+#macro pawn_draw(start_coord,scale_factor,wanted_color)
 
-#macro pawn_draw()
-    pawn_draw_head()
-    pawn_draw_base()
-    pawn_draw_body()
-#end
+    #declare scale_factor = scale_factor*(0.25);
+    #local A1 = <0, 4.73> ;
+    #local A2 = <0.67, 4.73> ;
+    #local A3 = <1.05, 3.94> ;
+    #local A4 = <0.6, 3.42> ;
 
-#macro pawn_draw_head()
-  sphere{
-      <0,6,0>, 1
-      pigment{
-        pawn_color
+    #local B2 = <0.48, 3.28> ;
+    #local B3 = <0.59, 3.35> ;
+    #local B4 = <0.69, 3.28> ;
+
+    #local C2 = <0.79, 3.22> ;
+    #local C3 = <0.79, 3.08> ;
+    #local C4 = <0.69, 3.02> ;
+
+    #local D2 = <0.59, 2.95> ;
+    #local D3 = <0.45, 3.03> ;
+    #local D4 = <0.45, 2.9> ;
+
+    #local E2 = <0.45, 2.6> ;
+    #local E3 = <0.6, 1.9> ;
+    #local E4 = <0.8, 1.6> ;
+
+    #local F2 = <1.15, 1.5> ;
+    #local F3 = <1.2, 1> ;
+    #local F4 = <1.2, 0.8> ;                           
+                            
+    #local rota = <90,0,0> ;
+
+    union{
+      lathe{
+          bezier_spline
+          4
+          A1,A2,A3,A4
+          rotate rota
       }
-      rotate x*90
-  }
-  cylinder{
-    <0,5,0>, <0,5.2,>, 1
-    pigment{
-        pawn_color
-    }
-    rotate x*90
-  }
-#end
-
-#macro pawn_draw_body()
-  #declare scale_factor = 0.25;
-  #declare P0=<0,0>;
-  #declare P1=<0.8,0.1>;
-  #declare P2=<2,0>;
-  #declare P3=<1,2.3>;
-  #declare M0=P3;
-  #declare M1=<0.8,2.8>;
-  #declare M2=<0.5,3.5>;
-  #declare M3=<0.3,5>;
-  create_bezier(P0,P1,P2,P3)
-  object{
-    lathe{  
-      // nombre de points dans 
-      bezier_spline
-      4,
-      P0
-      P1
-      P2
-      P3
-      pigment{
-          pawn_color
+      lathe{
+          bezier_spline
+          4
+          A4,B2,B3,B4
+          rotate rota
       }
-      rotate x*90
-      translate <0,0,0> // <x, y, z>
-    }
-  }
-  lathe{
-  // nombre de points dans
-      bezier_spline 
-      4,
-      M3
-      M2
-      M1
-      M0
-      pigment{
-          pawn_color
+      lathe{
+          bezier_spline
+          4
+          B4,C2,C3,C4
+          rotate rota
       }
-      rotate x*90
-  }
-#end
-
-/**
- */
-#macro pawn_draw_base()
-    cylinder
-    {
-        <0,0,0>, <0,0,0.5>, 2
-        pigment{
-            pawn_color
-        }
+      lathe{
+          bezier_spline
+          4
+          C4,D2,D3,D4
+          rotate rota
+      }
+      lathe{
+          bezier_spline
+          4
+          D4,E2,E3,E4
+          rotate rota
+      }
+      lathe{
+          bezier_spline
+          4
+          E4,F2,F3,F4
+          rotate rota
+      }
+      // scale modifie les valeurs du repère pour cette objet pour x,y,z = 1 pour 1u.a ( unité arbitraire )
+      // par exemple si x,y,z = 1 pour 1cm si je vais un scale de 2 alors x,y,z = 2 pour 1 cm
+      // pour retrouver le bon translate par rapport au reste on calcul le translate nécessaire dans ce référenciel modifier par scale
+      // 1/scale*(coordonnées voulu) fonctionne
+      translate<start_coord.x*(1/scale_factor),start_coord.y*(1/scale_factor),start_coord.z*(1/scale_factor)>
+      scale scale_factor
+      pigment{
+        color wanted_color
+      }
     }
+    Socle(start_coord,scale_factor,wanted_color)
 #end
 
-#macro create_bezier(_P0,_P1,_P2,_P3)
+
+#macro Socle(start_coord,scale_factor,wanted_color)
+    #local F4 = <1.2, 0.8> ;
+    #local G2 = <1.58, 0.8> ;
+    #local G3 = <1.58, 0.45> ;
+    #local G4 = <1.3, 0.45> ;
+                            
+    #local H2 = <1.3, 0.38> ;
+    #local H3 = <1.4, 0.35> ;
+    #local H4 = <1.5, 0.35> ;                           
+                            
+    #local rota = <90,0,0> ;
+
+    union{
+      lathe{
+          bezier_spline
+          4
+          F4,G2,G3,G4
+          rotate rota
+      }
+      lathe{
+          bezier_spline
+          4
+          G4,H2,H3,H4
+          rotate rota
+      }
   
-  #declare cylinder_radius = 0.1;
-  #macro create_cylinder(_P0,_P1,_color)
-
       cylinder{
-          _P0,
-          _P1,
-          cylinder_radius
-          open
-          pigment{ _color }
+          <0,0,0> <0,0,0.35> 1.5
       }
-
-  #end
-  
-  #declare precision_n=20;
-  #for (_t, 0, 1,1/precision_n)
-      #declare _x0 = pow((1-_t),3)*_P0.x + 3*_t*pow((1-_t),2)*_P1.x+3*pow(_t,2)*(1-_t)*_P2.x+pow(_t,3)*_P3.x;
-      #declare _y0 = pow((1-_t),3)*_P0.y + 3*_t*pow((1-_t),2)*_P1.y+3*pow(_t,2)*(1-_t)*_P2.y+pow(_t,3)*_P3.y;
-      //#declare _x1 = pow((1-_t+1/precision_n),3)*_P0.x + 3*_t*pow((1-_t+1/precision_n),2)*_P1.x+3*pow(_t+1/precision_n,2)*(1-_t)*_P2.x+pow(_t+1/precision_n,3)*_P3.x;
-      //#declare _y1 = pow((1-_t+1/precision_n),3)*_P0.y + 3*_t*pow((1-_t+1/precision_n),2)*_P1.y+3*pow(_t+1/precision_n,2)*(1-_t)*_P2.y+pow(_t+1/precision_n,3)*_P3.y;
-      #declare temp_t = _t+1/precision_n;
-      #declare _x1 = pow((1-temp_t),3)*_P0.x + 3*temp_t*pow((1-temp_t),2)*_P1.x+3*pow(temp_t,2)*(1-temp_t)*_P2.x+pow(temp_t,3)*_P3.x;
-      #declare _y1 = pow((1-temp_t),3)*_P0.y + 3*temp_t*pow((1-temp_t),2)*_P1.y+3*pow(temp_t,2)*(1-temp_t)*_P2.y+pow(temp_t,3)*_P3.y;
-      create_cylinder(<_x0,_y0,0>,<_x1,_y1,0>,color rgb<0,0,1>)
-  #end
+      // scale modifie les valeurs du repère pour cette objet pour x,y,z = 1 pour 1u.a ( unité arbitraire )
+      // par exemple si x,y,z = 1 pour 1cm si je vais un scale de 2 alors x,y,z = 2 pour 1 cm
+      // pour retrouver le bon translate par rapport au reste on calcul le translate nécessaire dans ce référenciel modifier par scale
+      // 1/scale*(coordonnées voulu) fonctionne
+      translate<start_coord.x*(1/scale_factor),start_coord.y*(1/scale_factor),start_coord.z*(1/scale_factor)>
+      scale scale_factor
+      pigment{
+        color wanted_color
+      }
+    }
 #end
