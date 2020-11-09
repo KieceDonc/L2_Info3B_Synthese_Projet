@@ -77,14 +77,13 @@
   }
 
 #end*/  
-
-#declare base_torus_minor = 0.45;
-#declare body_start_z = 1-base_torus_minor/2;
-#declare body_rayon = 0.45;
-#declare head_start_z = body_start_z+3;
-#declare head_first_circle_rayon=sqrt(pow(0.8,2)+pow(body_rayon,2)); // pythagore
 #macro king_draw(start_coord,scale_factor,wanted_color)
 
+  #local base_torus_minor = 0.45;
+  #local body_start_z = 1-base_torus_minor/2;
+  #local body_rayon = 0.45;
+  #local head_start_z = body_start_z+3;
+  #local head_first_circle_rayon=sqrt(pow(0.8,2)+pow(body_rayon,2)); // pythagore
   union{ 
 
     sphere{ // head hat
@@ -151,7 +150,7 @@
     pigment{
       color rgb<1,1,1>
     }
-    // le roi fait de base 2 de largeur, 5 de hateur et 2 de profondeur.
+    // le roi fait de base 2 de largeur, 3 de hateur et 2 de profondeur.
     // on veut le roi pour 1 de largeur / profondeur 
     // on multiplie le donc par 0.5
     #declare scale_factor = scale_factor*0.5*0.8; 

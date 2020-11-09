@@ -10,6 +10,7 @@
 #include "echiquier.pov"
 #include "pawn.pov"
 #include "king.pov"
+#include "queen.pov"
 
 #declare Pi = 3.1415926535897932384626;
 
@@ -19,19 +20,11 @@ camera {
 location <1.2*sca,1*sca,sca>
 look_at <0,0,0>
 sky   <0,0,1>
+translate<0.5,0.5,0>
 right <-image_width/image_height,0,0>
 }
 
 
-
-/*  light_source { <-17, 0, 0> color Magenta }
-light_source { <0, 0, 0> color White }
-light_source { <0, 0, 0> color rgb <0.75,0.5,0.59>spotlight radius 2 falloff 10 tightness 10 point_at <10,0,0>}
-light_source { <0 , 10 , 0 > color  rgb <0.5,0.5,0.49>}
-light_source { <10 , 10 , 10 > color  rgb <0.825,0.5,0.9>}
-light_source { <15 , 15 , -15 > color Red }
-light_source { <15 , 15 , 0 > color Green }
-light_source { <15 , -15 , 15 > color rgb <0.5,0.25,0.49>}*/
 #declare light_color = color rgb<0.5,0.5,0.5>;
 light_source { <4 , 4 , 10 > light_color}
 light_source { <4 , -1 , 10 > light_color}
@@ -125,3 +118,4 @@ echiquier_draw(<0,0,0>,1,echiquier_height)
   pawn_draw(<_t+0.5,1.5,echiquier_height>,1,color rgb<1,1,1>)
 #end
 king_draw(<4.5,0.5,echiquier_height>,1,color rgb<1,1,1>)
+queen_draw(<3.5,0.5,echiquier_height>,1,color rgb<1,1,1>)
