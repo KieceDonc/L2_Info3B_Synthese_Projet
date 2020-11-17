@@ -121,19 +121,16 @@ union{
     }
   }
 
-
   pigment{
-    color rgb<1,1,1>
+    wanted_color
   }
-  // le roi fait de base 2 de largeur, 3 de hateur et 2 de profondeur.
-  // on veut le roi pour 1 de largeur / profondeur 
-  // on multiplie le donc par 0.5
-  #declare scale_factor = scale_factor*0.5*0.8; 
+  // on multiplie le donc par 0.3 pour faire la reine plus petite que le roi
+  #declare scale_factor = scale_factor*0.35; 
   // scale modifie les valeurs du repère pour cette objet pour x,y,z = 1 pour 1u.a ( unité arbitraire )
   // par exemple si x,y,z = 1 pour 1cm si je vais un scale de 2 alors x,y,z = 2 pour 1 cm
   // pour retrouver le bon translate par rapport au reste on calcul le translate nécessaire dans ce référenciel modifier par scale
   // 1/scale*(coordonnées voulu) fonctionne
   translate<start_coord.x*(1/scale_factor),start_coord.y*(1/scale_factor),start_coord.z*(1/scale_factor)>
-  scale <scale_factor,scale_factor,scale_factor*(2.8/3.3)> // ( 2.8 hauteur voulu dans référentiel 1,1,1 ) ( 3.3 hauteur dans référentiel 1,1,1) (3.3x=2.8 <=> x=2.8/3.3)
+  scale <scale_factor,scale_factor,scale_factor>
 }
 #end

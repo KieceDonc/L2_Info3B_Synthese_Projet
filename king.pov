@@ -1,82 +1,5 @@
-// https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_de_construction_de_solides
-// http://www.f-lohmueller.de/pov_tut/csg/povcsg2f.htm
-// http://docs.mcneel.com/rhino/5/help/fr-fr/popup_moreinformation/continuity_descriptions.htm
-/*#macro king_draw(start_coord,scale_factor,wanted_color)
-  #declare scale_factor=scale_factor*0.5; // le roi fait de base 2 de largeur, 5 de hateur et 2 de profondeur. 
-  #declare body_start_z = (1-0.45/2)*scale_factor;
-  #declare body_rayon = 0.45*scale_factor;
-  #declare head_start_z = body_start_z+3*scale_factor;
-  #declare head_first_circle_rayon=sqrt(pow(0.8*scale_factor,2)+pow(body_rayon,2)); // pythagore
+#include "socle.pov"
 
-  union{ 
-
-    sphere{ // head hat
-      <start_coord.x,start_coord.y,head_start_z-0.8*scale_factor+head_first_circle_rayon+0.15*scale_factor+start_coord.z>, 0.25*scale_factor
-    }
-
-
-    difference{ // head  
-      sphere{
-        <start_coord.x,start_coord.y,head_start_z-0.8*scale_factor+start_coord.z>, head_first_circle_rayon
-      }
-      box{
-          <-2*scale_factor+start_coord.x,-2*scale_factor+start_coord.y,0+start_coord.z>, <2*scale_factor+start_coord.x,2*scale_factor+start_coord.y,head_start_z+start_coord.z>
-      } 
-    }
-
-
-    torus { // anneau troisième du bas
-      0.15*scale_factor,0.2*scale_factor       
-      rotate x*90
-      translate<start_coord.x,start_coord.y,start_coord.z+body_start_z+2.25*scale_factor>
-    }
-    torus { // anneau deuxième du bas
-      0.25*scale_factor,0.2*scale_factor       
-      rotate x*90
-      translate<start_coord.x,start_coord.y,start_coord.z+body_start_z+2*scale_factor>
-    }
-    torus { // anneau premier du bas
-      0.35*scale_factor,0.2*scale_factor       
-      rotate x*90
-      translate<start_coord.x,start_coord.y,start_coord.z+body_start_z+1.85*scale_factor>
-    } 
-
-    difference{ // base
-      difference { 
-        sphere{
-          <start_coord.x,start_coord.y,start_coord.z>, 1*scale_factor 
-        }
-
-        box{
-            <-1*scale_factor+start_coord.x,-1*scale_factor+start_coord.y,start_coord.z>, <1*scale_factor+start_coord.x,1*scale_factor+start_coord.y,-1*scale_factor+start_coord.z>
-        } 
-      }
-      torus {
-        1*scale_factor, 0.45*scale_factor          
-        rotate x*90
-        translate<start_coord.x,start_coord.y,body_start_z+start_coord.z>
-      }
-    }
-
-
-    difference{ // body 
-      cylinder{ 
-        <start_coord.x,start_coord.y,body_start_z+start_coord.z>, <start_coord.x,start_coord.y,3*scale_factor+body_start_z+start_coord.z>, body_rayon
-      }
-      torus {
-        4.825*scale_factor,4.625*scale_factor        
-        rotate x*90
-        translate<start_coord.x,start_coord.y,1.5*scale_factor+body_start_z+start_coord.z>
-      }
-    }
-
-
-    pigment{
-      wanted_color
-    }
-  }
-
-#end*/  
 #macro king_draw(start_coord,scale_factor,wanted_color)
 
   #local base_torus_minor = 0.45;
@@ -148,7 +71,7 @@
 
 
     pigment{
-      color rgb<1,1,1>
+      wanted_color
     }
     // le roi fait de base 2 de largeur, 3 de hateur et 2 de profondeur.
     // on veut le roi pour 1 de largeur / profondeur 
