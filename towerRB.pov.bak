@@ -1,0 +1,59 @@
+#include "socleRB.pov"
+
+
+#macro TowerExemple()
+
+    #local A1 = <0, 0, 0.8> ;
+    #local A2 = <0, 0, 4> ;
+    #local radCylA = 1.2;
+
+    #local B1 = <0, 0, 4.6> ;
+    #local radMajTorB = 0.6
+    #local radMinTorB = 0.85
+
+    #local C1 = <0, 0, 5> ;
+    #local radMajTorC = 1.45 ;
+    #local radMinTorC = 0.4 ;
+
+    #local D1 = C1 ;
+    #local D2 = <0, 0, 7.5> ;
+    #local radCylD = 3 ;
+
+    #local E1 = <0, 0, 6> ;
+    #local E2 = D2 ;
+    #local radCylE = 2 ;
+
+    #local F2 = <1.15, 1.5> ;
+    #local F3 = <1.2, 1> ;
+    #local F4 = <1.2, 0.8> ;                           
+                            
+    #local rota = <90,0,0> ;
+    union{
+        cylinder {
+            A1, A2, radCylA // center of one end, center of other end, radius
+            pigment{color Red}   
+        }
+        torus {
+            radMajTorB, radMinTorB // major radius, minor radius
+            translate B1 // <x, y, z>
+            pigment{color Violet}
+        }
+        torus {
+            radMajTorC, radMinTorC // major radius, minor radius
+            translate C1 // <x, y, z>
+            pigment{color Cyan}
+        }
+        cylinder {
+            D1, D2, radCylD // center of one end, center of other end, radius  
+            pigment{color Yellow} 
+        }
+        cylinder {
+            E1, E2, radCylE // center of one end, center of other end, radius
+            pigment{color Magenta}   
+        }
+
+
+        SocleExemple()
+    }
+
+#end

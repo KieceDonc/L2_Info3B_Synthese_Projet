@@ -78,13 +78,13 @@
         lathe{
             bezier_spline
             4
+            E4,F2,F3,F4
             pigment {
                 color Gray
             }
-            E4,F2,F3,F4
             rotate rota
         }
-        Socle(Black)
+        SocleExemple()
     }
 
     
@@ -117,46 +117,48 @@
     #local F4 = <1.2, 0.8> ;                           
                             
     #local rota = <90,0,0> ;
-
-    lathe{
-        bezier_spline
-        4
-        A1,A2,A3,A4
-        rotate rota
+    union{
+        
+        lathe{
+            bezier_spline
+            4
+            A1,A2,A3,A4
+            rotate rota
+        }
+        lathe{
+            bezier_spline
+            4
+            A4,B2,B3,B4
+            rotate rota
+        }
+        lathe{
+            bezier_spline
+            4
+            B4,C2,C3,C4
+            rotate rota
+        }
+        lathe{
+            bezier_spline
+            4
+            C4,D2,D3,D4
+            rotate rota
+        }
+        lathe{
+            bezier_spline
+            4
+            D4,E2,E3,E4
+            rotate rota
+        }
+        lathe{
+            bezier_spline
+            4
+            E4,F2,F3,F4
+            rotate rota
+        }
+        Socle(Black)
+        pigment{color col}
+        getFinish()
     }
-    lathe{
-        bezier_spline
-        4
-        A4,B2,B3,B4
-        rotate rota
-    }
-    lathe{
-        bezier_spline
-        4
-        B4,C2,C3,C4
-        rotate rota
-    }
-    lathe{
-        bezier_spline
-        4
-        C4,D2,D3,D4
-        rotate rota
-    }
-    lathe{
-        bezier_spline
-        4
-        D4,E2,E3,E4
-        rotate rota
-    }
-    lathe{
-        bezier_spline
-        4
-        E4,F2,F3,F4
-        rotate rota
-    }
-    Socle(Black)
-    pigment{color col}
-    getFinish()
 #end
 
 
