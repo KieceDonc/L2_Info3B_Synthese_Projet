@@ -1,11 +1,16 @@
 #macro bishop_drawn(start_coord,scale_factor,wanted_color)
-  #declare body = 4; 
-  #declare first_ring = body-0.8;
-  #declare second_ring = body-0.5;
-  #declare head_hat_r = 0.08;
-  #declare head_hat = body+0.6-head_hat_r/2;
-  union{
-    difference{
+
+  #local base_torus_minor = 0.45;
+  #local base_start_z = 1-base_torus_minor/2;
+  #local body_start_z = 0.4;
+  
+  #local body = 4; 
+  #local first_ring = body-0.8;
+  #local second_ring = body-0.5;
+  #local head_hat_r = 0.08;
+  #local head_hat = body+0.6-head_hat_r/2;
+  difference{
+    union{
       blob{
         threshold 0.1
         sphere { // body
@@ -53,21 +58,34 @@
           translate<0,0,head_hat/local_scale_z>
           scale<3,3,local_scale_z>
         }
+        translate<0,0,body_start_z>
       }
-      box{
-        <0,0,0>,<1,0.2,1>
-        rotate <-45, 0, 0> // <x°, y°, z°>
-        translate <-0.5,0.2,head_hat-0.3>
+
+      difference{ // base
+        difference { 
+          sphere{
+            <0,0,0>, 1 
+          }
+
+          box{
+              <-1,-1,0>, <1,1,-1>
+          } 
+        }
+        torus {
+          1, 0.45          
+          rotate x*90
+          translate<0,0,base_start_z>
+        }
+        pigment{
+          color rgb<1,1,1>
+        }
       }
     }
-    /*box{
+    box{ // permet de faire la fente
       <0,0,0>,<1,0.2,1>
       rotate <-45, 0, 0> // <x°, y°, z°>
-      translate <-0.5,0.2,head_hat-0.3>
-      pigment{
-        color rgb<0.5,0.7,0.5>
-      }
-    }*/
+      translate <-0.5,0.2,head_hat-0.3+body_start_z>
+    }
     // on multiplie le donc par 0.3 pour faire le fou plus petit que le roi/reine
     #declare scale_factor = scale_factor*0.3; 
     // scale modifie les valeurs du repère pour cette objet pour x,y,z = 1 pour 1u.a ( unité arbitraire )

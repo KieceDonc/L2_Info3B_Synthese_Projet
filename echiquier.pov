@@ -1,4 +1,3 @@
-
 #declare square_length_echiquier = 8;
 #declare points_echiquier = array[square_length_echiquier+1][square_length_echiquier+1];
 
