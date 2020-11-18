@@ -76,9 +76,6 @@
           rotate x*90
           translate<0,0,base_start_z>
         }
-        pigment{
-          color rgb<1,1,1>
-        }
       }
     }
     box{ // permet de faire la fente

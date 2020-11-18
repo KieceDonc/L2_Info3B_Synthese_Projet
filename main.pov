@@ -16,16 +16,18 @@
 #declare Pi = 3.1415926535897932384626;
 
 #declare axe=1;
-#declare sca=6;
+#declare sca=5;
 camera {
 location <1.2*sca,1*sca,sca>
 look_at <0,0,0>
 sky   <0,0,1>
-translate<0,0,0>
+translate<9,9,9>
 right <-image_width/image_height,0,0>
 }
 
-
+// http://users.skynet.be/bs936509/povfr1/anim/povfr-anim-01.htm
+// povray main.pov +KI0 +KF200 +KFI0 +KFF20
+// convert -delay 10 -loop 0 *.png animation.gif
 #declare light_color = color rgb<0.5,0.5,0.5>;
 light_source { <4 , 4 , 10 > light_color}
 light_source { <4 , -1 , 10 > light_color}
@@ -117,12 +119,21 @@ rotate <0,0,45>
 #declare white_color = color rgb<1,1,1>;
 #declare black_color = color rgb<0.2,0.2,0.2>;
 
+#if(clock<=100)
+  pawn_draw(<4.5,1.5+clock/50,echiquier_height>,1,white_color)
+#else
+  pawn_draw(<4.5,3.5,echiquier_height>,1,white_color)
+#end
+
 // on dessine l'échiquier
 echiquier_draw(<0,0,0>,1,echiquier_height)
 
 // on dessine les points noirs et blancs
 #for (_t, 0, 7, 1)
-  pawn_draw(<_t+0.5,1.5,echiquier_height>,1,white_color)
+  #if(_t!=4) // condition qui permet de gérer le piont e
+    pawn_draw(<_t+0.5,1.5,echiquier_height>,1,white_color)
+  #end
+  
 #end
 #for (_t, 0, 7, 1)
   pawn_draw(<_t+0.5,6.5,echiquier_height>,1,black_color)
@@ -141,3 +152,14 @@ bishop_drawn(<2.5,0.5,echiquier_height>,1,white_color)
 bishop_drawn(<5.5,0.5,echiquier_height>,1,white_color)
 bishop_drawn(<2.5,7.5,echiquier_height>,1,black_color)
 bishop_drawn(<5.5,7.5,echiquier_height>,1,black_color)
+
+#if(clock>100)
+  #local P0=<0,0>;
+  #local P1=<0.5,0.5>;
+  #local P2=<1,1>;
+  #local P3=<1,2>;
+  #local _t = (clock-100)/100; // [101=>200] - > []
+  #local _x = pow((1-_t),3)*P0.x + 3*_t*pow((1-_t),2)*P1.x+3*pow(_t,2)*(1-_t)*P2.x+pow(_t,3)*P3.x;
+  #local _y = pow((1-_t),3)*P0.y + 3*_t*pow((1-_t),2)*P1.y+3*pow(_t,2)*(1-_t)*P2.y+pow(_t,3)*P3.y;
+  bishop_drawn(<1.5+_x,0.5+_y,echiquier_height>,1,color rgb<0,0,1>)
+#end
