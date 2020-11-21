@@ -28,13 +28,9 @@
       <0,0,0> <0,0,0.35> 1.5
     }
     pigment{
-      color wanted_color
+      wanted_color
     }
     translate<start_coord.x*(1/scale_factor),start_coord.y*(1/scale_factor),start_coord.z*(1/scale_factor)>
     scale scale_factor
   }
-#end
-
-#macro getSocleHeight(var)
-  #declare var = 2;
 #end

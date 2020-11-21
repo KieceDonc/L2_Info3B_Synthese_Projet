@@ -12,16 +12,16 @@
 #include "king.pov"
 #include "queen.pov"
 #include "bishop.pov"
+#include "tower.pov"
 
 #declare Pi = 3.1415926535897932384626;
 
 #declare axe=1;
-#declare sca=5;
+#declare sca=10;
 camera {
-location <1.2*sca,1*sca,sca>
-look_at <0,0,0>
+location <1.2*sca,1*sca,sca/2>
+look_at <4,4,0>
 sky   <0,0,1>
-translate<9,9,9>
 right <-image_width/image_height,0,0>
 }
 
@@ -152,6 +152,12 @@ bishop_drawn(<2.5,0.5,echiquier_height>,1,white_color)
 bishop_drawn(<5.5,0.5,echiquier_height>,1,white_color)
 bishop_drawn(<2.5,7.5,echiquier_height>,1,black_color)
 bishop_drawn(<5.5,7.5,echiquier_height>,1,black_color)
+
+// on dessine les tours
+tower_draw(<0.5,0.5,echiquier_height>,1,white_color)
+tower_draw(<7.5,0.5,echiquier_height>,1,white_color)
+tower_draw(<0.5,7.5,echiquier_height>,1,black_color)
+tower_draw(<7.5,7.5,echiquier_height>,1,black_color)
 
 #if(clock>100)
   #local P0=<0,0>;

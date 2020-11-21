@@ -1,6 +1,6 @@
 #macro pawn_draw(start_coord,scale_factor,wanted_color)
 
-    #declare scale_factor = scale_factor*(0.25);
+    #declare scale_factor = scale_factor*(1/4.73);
     #local A1 = <0, 4.73> ;
     #local A2 = <0.67, 4.73> ;
     #local A3 = <1.05, 3.94> ;
