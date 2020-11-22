@@ -1,12 +1,13 @@
 #include "inc/sky.inc"
 #include "inc/triedreXYZ.inc"
 #include "pawnRB.pov" 
-#include "towerRB.pov"
+#include "towerRB.pov"  
+#include "knight.pov"
 
 
 camera 
 {
-    location <10,10,5>
+    location <7,10,5>
     look_at<0,0,3>
     sky   <0,0,1>
     right <-image_width/image_height,0,0>
@@ -28,9 +29,6 @@ light_source
     color <1.0, 1.0,  1.0> // <red, green, blue>
 } 
  
-
-#declare ecart = 1.5;
-object{Tower(rgb<1,1,240/255>) translate <-ecart, ecart, 0>}
-object{Pawn(rgb<0,0,0>) translate <ecart, -ecart,0>}
+  
 
 
