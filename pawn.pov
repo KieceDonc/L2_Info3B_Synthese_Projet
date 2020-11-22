@@ -75,11 +75,11 @@
         color wanted_color
       }
     }
-    Socle(start_coord,scale_factor,wanted_color)
+    socle(start_coord,scale_factor,wanted_color)
 #end
 
 
-#macro Socle(start_coord,scale_factor,wanted_color)
+#macro socle(start_coord,scale_factor,wanted_color)
     #local F4 = <1.2, 0.8> ;
     #local G2 = <1.58, 0.8> ;
     #local G3 = <1.58, 0.45> ;

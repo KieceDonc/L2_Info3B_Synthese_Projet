@@ -26,7 +26,7 @@ right <-image_width/image_height,0,0>
 }
 
 // http://users.skynet.be/bs936509/povfr1/anim/povfr-anim-01.htm
-// povray main.pov +KI0 +KF200 +KFI0 +KFF20
+// povray main.pov +KI0 +KF300 +KFI0 +KF30
 // convert -delay 10 -loop 0 *.png animation.gif
 #declare light_color = color rgb<0.5,0.5,0.5>;
 light_source { <4 , 4 , 10 > light_color}
@@ -95,7 +95,7 @@ union{
   flecheDiffuseNom(O3,K,Blue,0.75,rCyl,rCone,1,"Z",0.35,<90,0,180>,<-0.20,0.0,0.750>)
 #end
 
-plane{
+/*plane{
 -z 150
   material {
       texture{pigment
@@ -113,24 +113,18 @@ plane{
       }
   }
 rotate <0,0,45>
-}
+}*/
 
 #declare echiquier_height = 0.125;
 #declare white_color = color rgb<1,1,1>;
 #declare black_color = color rgb<0.2,0.2,0.2>;
-
-#if(clock<=100)
-  pawn_draw(<4.5,1.5+clock/50,echiquier_height>,1,white_color)
-#else
-  pawn_draw(<4.5,3.5,echiquier_height>,1,white_color)
-#end
 
 // on dessine l'échiquier
 echiquier_draw(<0,0,0>,1,echiquier_height)
 
 // on dessine les points noirs et blancs
 #for (_t, 0, 7, 1)
-  #if(_t!=4) // condition qui permet de gérer le piont e
+  #if(_t!=3) // condition qui permet de gérer le piont que l'on souhaite bouger
     pawn_draw(<_t+0.5,1.5,echiquier_height>,1,white_color)
   #end
   
@@ -148,7 +142,6 @@ queen_draw(<3.5,0.5,echiquier_height>,1,white_color)
 queen_draw(<3.5,7.5,echiquier_height>,1,black_color)
 
 // on dessine les fous
-bishop_drawn(<2.5,0.5,echiquier_height>,1,white_color)
 bishop_drawn(<5.5,0.5,echiquier_height>,1,white_color)
 bishop_drawn(<2.5,7.5,echiquier_height>,1,black_color)
 bishop_drawn(<5.5,7.5,echiquier_height>,1,black_color)
@@ -159,13 +152,37 @@ tower_draw(<7.5,0.5,echiquier_height>,1,white_color)
 tower_draw(<0.5,7.5,echiquier_height>,1,black_color)
 tower_draw(<7.5,7.5,echiquier_height>,1,black_color)
 
-#if(clock>100)
+#if(clock<=100)
+  pawn_draw(<3.5,1.5+clock/50,echiquier_height>,1,white_color)
+#else
+  pawn_draw(<3.5,3.5,echiquier_height>,1,white_color)
+#end
+
+
+#if(clock>100 & clock<=200)
   #local P0=<0,0>;
   #local P1=<0.5,0.5>;
   #local P2=<1,1>;
   #local P3=<1,2>;
-  #local _t = (clock-100)/100; // [101=>200] - > []
+  #local _t = (clock-100)/100; // [101=>200] - > [1,01=>2]
   #local _x = pow((1-_t),3)*P0.x + 3*_t*pow((1-_t),2)*P1.x+3*pow(_t,2)*(1-_t)*P2.x+pow(_t,3)*P3.x;
   #local _y = pow((1-_t),3)*P0.y + 3*_t*pow((1-_t),2)*P1.y+3*pow(_t,2)*(1-_t)*P2.y+pow(_t,3)*P3.y;
-  bishop_drawn(<1.5+_x,0.5+_y,echiquier_height>,1,color rgb<0,0,1>)
+  bishop_drawn(<6.5-_x,7.5-_y,echiquier_height>,1,color rgb<0,0,1>)
+#else
+  #if(clock<=100)
+    bishop_drawn(<6.5,7.5,echiquier_height>,1,color rgb<0,0,1>)
+  #else
+    bishop_drawn(<5.5,5.5,echiquier_height>,1,color rgb<0,0,1>)
+  #end
+#end
+
+#if(clock>200 & clock<=300)
+  #local _t = ((clock-200)/100)*3; // [301=>400] - > [1,01=>3]
+  bishop_drawn(<2.5+_t,0.5+_t,echiquier_height>,1,white_color)
+#else
+  #if(clock<=200)
+    bishop_drawn(<2.5,0.5,echiquier_height>,1,white_color)
+  #else
+    bishop_drawn(<5.5,3.5,echiquier_height>,1,color rgb<0,0,1>)
+  #end
 #end
