@@ -112,21 +112,17 @@
 
     #if(y_mod_2=0) // x && y pair, la case doit être noire
         #declare bool=false;
-        #debug "1"
     #else // x pair && y impair, la case doit être blanche
         #declare bool=true; 
-        #debug "2"
     #end
 
   #else
     
     #if(y_mod_2=0) // x impair && y pair, la case doit être blanche
       #declare bool=true;
-      #debug "3"
 
     #else // x && y impair, la case doit être noire
       #declare bool=false;
-      #debug "4"
     #end
 
   #end
