@@ -74,4 +74,3 @@
   }
   socle_draw(start_coord,scale_factor,wanted_color)
 #end
-
