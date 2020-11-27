@@ -35,6 +35,7 @@ light_source { <4 , -1 , 10 > light_color}
 light_source { <-1 , 4 , 10 > light_color}
 light_source { <4 , 8 , 10 > light_color}
 light_source { <8 , 4 , 10 > light_color}
+light_source { <4 , 4 , 4 > light_color}
 light_source { <2 , 2 , 0 > light_color}
 
 #declare use_phot=0;
@@ -69,7 +70,11 @@ echiquier_draw(<0,0,0>,1,echiquier_height)
 
 // on dessine les points noirs et blancs
 #for (_t, 0, 7, 1)
-    pawn_draw(<_t+0.5,1.5,echiquier_height>,1,white_color)  
+    #if(_t=3)
+      pawn_draw(<_t+0.5,1.5,echiquier_height>,1,color rgbt<1,1,1,0.9>)
+    #else 
+      pawn_draw(<_t+0.5,1.5,echiquier_height>,1,white_color)
+    #end   
     pawn_draw(<_t+0.5,6.5,echiquier_height>,1,black_color)
 #end
 
@@ -107,7 +112,23 @@ tower_draw(<7.5,7.5,echiquier_height>,1,black_color)
 
 #declare cylinder_r = 0.2;
 cylinder{
-  <3.5,1.5,echiquier_height+cylinder_r>,<3.5,3.5,echiquier_height+cylinder_r>,
+  <3.5,1.5,echiquier_height+cylinder_r+1>,<3.5,3.5,echiquier_height+cylinder_r+1>,
+  cylinder_r
+  pigment{
+    color rgb<0,0,1>
+  }
+}
+
+cylinder{
+  <3.5,1.5,echiquier_height+cylinder_r>,<3.5,1.5,echiquier_height+cylinder_r+1>,
+  cylinder_r
+  pigment{
+    color rgb<0,0,1>
+  }
+}
+
+cylinder{
+  <3.5,3.5,echiquier_height+cylinder_r>,<3.5,3.5,echiquier_height+cylinder_r+1>,
   cylinder_r
   pigment{
     color rgb<0,0,1>
