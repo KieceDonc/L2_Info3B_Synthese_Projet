@@ -7,17 +7,18 @@
 #local head_start_z = body_start_z+3;
 #local head_first_circle_rayon=sqrt(pow(0.8,2)+pow(body_rayon,2)); // pythagore
 #declare axe=1;
-#declare sca=3;
+#declare sca=5;
 camera {
-location <1.2*sca,1.2*sca,5>
+location <1.2*sca,1.2*sca,sca>
 look_at <0,0,0>
 sky   <0,0,1>
-translate<0,0,5>
+translate<0,0,2>
 right <-image_width/image_height,0,0>
 }
 background{
   color rgb<1,1,1>
 }
+
 
 #declare light_color = color rgb<0.5,0.5,0.5>;
 light_source { <4 , 4 , 10 > light_color}
@@ -34,7 +35,7 @@ light_source { <2 , 2 , 0 > light_color}
   #local head_first_circle_rayon=sqrt(pow(0.8,2)+pow(body_rayon,2)); // pythagore
   #local crown_height = 0.5;   
   #local crown_hole_width = 0.12; 
-/*    torus {
+    /*torus {
       4.825,4.712      
       rotate x*90
       translate<0,0,1.5+body_start_z>
@@ -222,14 +223,13 @@ light_source { <2 , 2 , 0 > light_color}
       }
     }
   }
-
-  /*sphere{ // head hat
+  sphere{ // head hat
     <0,0,head_start_z-0.8+head_first_circle_rayon+0.15>, 0.25
           pigment{
         color rgb<0.7,0.2,0.4>
       }
-  }*/
-  /*difference{ // head  
+  }
+  difference{ // head  
     sphere{
       <0,0,head_start_z-0.8>, head_first_circle_rayon
                 pigment{
@@ -242,9 +242,8 @@ light_source { <2 , 2 , 0 > light_color}
           color rgb<0.5,0.5,0.5>
         }
     } 
-  }*/
-
-  /*torus { // anneau troisième du bas
+  }
+  torus { // anneau troisième du bas
     0.15,0.2       
     rotate x*90
     translate<0,0,+body_start_z+2.25>
@@ -259,8 +258,8 @@ light_source { <2 , 2 , 0 > light_color}
     pigment{
       color rgb<0.5,1,0>
     }
-  }*/
-/*
+  }
+
     difference{ // base
       difference { 
         sphere{
@@ -304,9 +303,10 @@ light_source { <2 , 2 , 0 > light_color}
       }
     }
     
-*/
-
-#macro queen_draw(start_coord,scale_factor,wanted_color)
+/*
+#declare start_coord = <0,0,0>;
+#declare scale_factor = 1;
+#declare wanted_color = color rgb<0.8,0.8,0.8>;
 union{ 
 
   difference{ // crown 
@@ -431,5 +431,4 @@ union{
   // 1/scale*(coordonnées voulu) fonctionne
   translate<start_coord.x*(1/scale_factor),start_coord.y*(1/scale_factor),start_coord.z*(1/scale_factor)>
   scale <scale_factor,scale_factor,scale_factor>
-}
-#end
+}*/
