@@ -2,13 +2,13 @@
 #include "inc/triedreXYZ.inc"
 #include "pawnRB.pov" 
 #include "towerRB.pov"  
-#include "knight.pov"
+#include "knightRB2.pov"
 
 
 camera 
 {
-    location <7,10,5>
-    look_at<0,0,3>
+    location <8,-12,8>
+    look_at<0,0,2>
     sky   <0,0,1>
     right <-image_width/image_height,0,0>
 }           
@@ -28,7 +28,10 @@ light_source
     <0, 0, 10> // <x, y, z>
     color <1.0, 1.0,  1.0> // <red, green, blue>
 } 
- 
+                         
+                         
+Knight(rgb<0.1,0.1,0.1>)
+//object{TowerExemple() translate<0,-6,0>}                       
   
 
 

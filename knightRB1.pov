@@ -1,6 +1,6 @@
 #include "socleRB.pov"
 
-#macro Knight()
+#macro Knight2Exemple()
     Socle(Black)
     #declare gapY = 0.5;
     #declare nb=14;
