@@ -35,6 +35,19 @@ light_source { <2 , 2 , 0 > light_color}
   #local head_first_circle_rayon=sqrt(pow(0.8,2)+pow(body_rayon,2)); // pythagore
   #local crown_height = 0.5;   
   #local crown_hole_width = 0.12; 
+
+    /*box{ // coupage du torus partie inférieur
+      <-10,-10,-10> , <10,10,head_start_z>
+            pigment{
+        color rgb<0,0.5,0.8>
+      }
+    }*/
+    /*box{ // coupage du torus partie supérieur
+      <-10,-10,10> , <10,10,head_start_z+crown_height>
+      pigment{
+        color rgb<0.8,0.5,0.8>
+      }
+    }*/
     /*torus {
       4.825,4.712      
       rotate x*90
@@ -302,7 +315,6 @@ light_source { <2 , 2 , 0 > light_color}
         }
       }
     }
-    
 /*
 #declare start_coord = <0,0,0>;
 #declare scale_factor = 1;
