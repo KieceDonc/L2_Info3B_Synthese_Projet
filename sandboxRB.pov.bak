@@ -2,13 +2,15 @@
 #include "inc/triedreXYZ.inc"
 #include "pawnRB.pov" 
 #include "towerRB.pov"  
-#include "knightRB2.pov"
+#include "knightRB2.pov"   
+#include "echiquierRB.pov"
+#include "textures.inc"
 
 
 camera 
 {
-    location <12,0,4>
-    look_at<0,0,4>
+    location <8,-12,8>
+    look_at<0,0,2>
     sky   <0,0,1>
     right <-image_width/image_height,0,0>
 }           
@@ -28,10 +30,12 @@ light_source
     <0, 0, 10> // <x, y, z>
     color <1.0, 1.0,  1.0> // <red, green, blue>
 } 
+
+#declare c1 = White;
+#declare c2 = Brown_Agate; 
+#declare c3 = Sandalwood;
                          
-                         
-Knight()
-object{TowerExemple() translate<0,-6,0>}                       
+EchiquierChecker(5, c1, c2, c3)                     
   
 
 
