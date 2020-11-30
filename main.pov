@@ -59,12 +59,16 @@ global_settings{
   sky_sphere {S_Cloud5 rotate <90,0.051, 1>}
 #end
 
-#declare echiquier_height = 0.125;
+#declare echiquier_height = 1;
 #declare white_color = color rgb<1,1,1>;
 #declare black_color = color rgb<0.2,0.2,0.2>;
 
+#declare c1 = White;
+#declare c2 = Black; 
+#declare c3 = PinkAlabaster;
+
 // on dessine l'échiquier
-echiquier_draw(<0,0,0>,1,echiquier_height)
+echiquier_draw(8, c1, c2, c3, 1, echiquier_height, <0,0,0>)
 
 // on dessine les points noirs et blancs
 #for (_t, 0, 7, 1)
@@ -96,9 +100,9 @@ bishop_drawn(<2.5,7.5,echiquier_height>,1,black_color)
 bishop_drawn(<5.5,7.5,echiquier_height>,1,black_color)
 
 // on dessine les cavaliers
-knight_draw(<1.5,0.5,echiquier_height>,1,<0,0,-90>,white_color)
-knight_draw(<6.5,0.5,echiquier_height>,1,<0,0,-90>,white_color)
-knight_draw(<1.5,7.5,echiquier_height>,1,<0,0,90>,black_color)
+knight_draw(<1.5,0.5,echiquier_height>,1,<0,0,180>,white_color)
+knight_draw(<6.5,0.5,echiquier_height>,1,<0,0,180>,white_color)
+knight_draw(<1.5,7.5,echiquier_height>,1,<0,0,0>,black_color)
 
 // on dessine les tours
 tower_draw(<0.5,0.5,echiquier_height>,1,white_color)
@@ -150,28 +154,4 @@ tower_draw(<7.5,7.5,echiquier_height>,1,black_color)
   #else
     bishop_drawn(<5.5,3.5,echiquier_height>,1,white_color)
   #end
-#end
-
-#local blue_cylinder_color = color rgb<0,0,1>;
-#local precision_n = 10;
-#local _P0=<0,0>;
-#local _P1=<0,1.5>;
-#local _P2=<1,2>;
-#local _P3=<1,2>;
-#for (_t, 0, 1,1/precision_n)
-
-    #local _x0 = pow((1-_t),3)*_P0.x + 3*_t*pow((1-_t),2)*_P1.x+3*pow(_t,2)*(1-_t)*_P2.x+pow(_t,3)*_P3.x;
-    #local _y0 = pow((1-_t),3)*_P0.y + 3*_t*pow((1-_t),2)*_P1.y+3*pow(_t,2)*(1-_t)*_P2.y+pow(_t,3)*_P3.y;
-    #local temp_t = _t+1/precision_n;
-    #local _x1 = pow((1-temp_t),3)*_P0.x + 3*temp_t*pow((1-temp_t),2)*_P1.x+3*pow(temp_t,2)*(1-temp_t)*_P2.x+pow(temp_t,3)*_P3.x;
-    #local _y1 = pow((1-temp_t),3)*_P0.y + 3*temp_t*pow((1-temp_t),2)*_P1.y+3*pow(temp_t,2)*(1-temp_t)*_P2.y+pow(temp_t,3)*_P3.y;
-
-    cylinder{
-      <6.5-_x0,7.5-_y0,echiquier_height+1>,
-      <6.5-_x1,7.5-_y1,echiquier_height+1>,
-      0.1
-      pigment{ 
-        color rgb<0,0,1>
-      }
-    }
 #end
