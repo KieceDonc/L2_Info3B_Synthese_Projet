@@ -31,6 +31,7 @@
     }
 #end
 
+// n la taille de l'échiquier (nombre de cases), c1 et c2 les deux couleurs utilisées, c3 la texture du bord
 #macro EchiquierChecker(n, c1, c2, c3)
     union{
         box{

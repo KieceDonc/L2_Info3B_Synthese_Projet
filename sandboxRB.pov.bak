@@ -32,8 +32,8 @@ light_source
 } 
 
 #declare c1 = White;
-#declare c2 = Brown_Agate; 
-#declare c3 = Sandalwood;
+#declare c2 = Black; 
+#declare c3 = PinkAlabaster;
                          
 EchiquierChecker(5, c1, c2, c3)                     
   

@@ -32,10 +32,10 @@
 #end
 
 // n la taille de l'échiquier (nombre de cases), c1 et c2 les deux couleurs utilisées, c3 la texture du bord
-#macro EchiquierChecker(n, c1, c2, c3)
+#macro EchiquierChecker(n,h, c1, c2, c3)
     union{
         box{
-            <0,0,0>,<n,n,0.5>
+            <0,0,0>,<n,n,h>
             pigment{checker pigment{c1}, pigment{c2}}
             finish {
                 phong 0.25
@@ -45,7 +45,7 @@
             }
         }
         box{
-            <-1,-1,0>,<n+1,n+1,0.4999>
+            <-1,-1,0>,<n+1,n+1,h-0.001>
             texture{c3}
         }
     }

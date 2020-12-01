@@ -35,7 +35,7 @@ light_source
 #declare c2 = Black; 
 #declare c3 = PinkAlabaster;
                          
-EchiquierChecker(5, c1, c2, c3)                     
+EchiquierChecker(8,1, c1, c2, c3)                     
   
 
 
