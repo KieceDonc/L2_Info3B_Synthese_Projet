@@ -7,7 +7,7 @@
     #for(i,0,n-1)
       #for(j,0,n-1)
         #local A = <i,j,0>;
-        #local B = <i+1,j+1,1>;
+        #local B = <i+1,j+1,h>;
         #if(mod(i*7+j,2)!=0)
           #local col = col1;
         #else
@@ -43,7 +43,7 @@
       }
     }
     box{
-      <-1,-1,0>,<n+1,n+1,0.4999>
+      <-1,-1,0>,<n+1,n+1,h-0.001>
       texture{
         c3
       }

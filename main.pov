@@ -54,7 +54,7 @@ global_settings{
   #end
 }
 
-#declare ciel=1;
+#declare ciel=0;
 #if (ciel)
   sky_sphere {S_Cloud5 rotate <90,0.051, 1>}
 #end
